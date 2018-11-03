@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.one.zhen.onen.R;
 import com.one.zhen.onen.adapter.CommonAdaper;
@@ -30,6 +32,12 @@ public class OneActivity extends AppCompatActivity {
         initAdapter();
 
         listView.setAdapter(commonAdaper);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(),"点击了Item",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void initAdapter() {
         commonAdaper = new CommonAdaper<Data>(this,list,R.layout.onelist_item) {
